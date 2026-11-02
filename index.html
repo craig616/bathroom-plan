@@ -2008,7 +2008,7 @@ function wallDetail(){
 /* ---------- state + wiring ---------- */
 let view='3d';
 const sheet=document.getElementById('sheet'),notes=document.getElementById('notes'),tipEl=document.getElementById('tip');
-const on={room:1,tiles:1,units:1,pipes:1,fix:1,cuts:1,splash:1,dims:1,grid:0,status:0,xray:0,buy:1,curtain:1};
+const on={room:1,tiles:1,units:1,pipes:1,fix:1,cuts:1,splash:1,dims:1,grid:0,status:0,xray:0,buy:0,curtain:1};
 try{const s=JSON.parse(localStorage.getItem('bd-layers')||'null');if(s)Object.assign(on,s)}catch(e){}
 const PF=`<div class="pft"><h2>Every panel, and what it's cut from</h2>
 <table><thead><tr><th>Panel</th><th>Where</th><th>Finished size</th><th>Cut from</th><th>How it's fixed</th></tr></thead><tbody>
