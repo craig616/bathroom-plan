@@ -1911,18 +1911,16 @@ const STEPS=[
   checks:['Plumb','Top at 2280','Tight to the tiles'],tools:['Drill','Level'],parts:['METOD high cabinet (in the order)','4 legs (in the order)','HAVSTORP 62×220 (in the order)','Rail offcut, 18 packer','4 × 25 screws for the cover (buy)']},
  {t:'Top unit 8 and panel 7',do:'Hang unit 8 on the rail above the tall cupboard. Cut panel 7 (12 × 620 × 400) from the spare 62×80 and screw it in between units 6 and 8 from inside.',
   checks:['Fronts line up with 5 and 6'],tools:['Drill','Saw'],parts:['Top unit 8 (in the order)','HAVSTORP 62×80 (in the order, spare)']},
- {t:'Splashback packer (only for B)',do:'If you chose B: fix an 18 mm ply or MDF sheet, 560 × 630, to the plaster above the dado from 795, clear of the shower tiles and their trim, so the wall is one flat plane. If E: skip this stage.',
-  checks:['B: flush with the tile face, or E: skipped'],tools:['Drill','Cavity fixings'],parts:['18 mm ply/MDF 560 × 630 (buy, B only)']},
  {t:'Cut the notches',do:'Hold a sheet of cardboard flat against the wall where panel 1 will stand and trace round the floor pipe. Cut panel 1 75 × 140, the sink base\'s left side 75 × (140 minus the leg height), and the 75 strip off the back of the bottom panel (plus the bite round the upright waste, if the dry-fit shows it\'s needed). Measure floor to unit 5\'s underside at the back and front of panel 1, and cut panel 1 to that less 2. Seal every cut edge.',
   checks:['Both of you measured each cut','Cut edges sealed'],tools:['Jigsaw, fine blade','Clamps, square','Cardboard'],parts:['HAVSTORP 62×220 for panel 1 (TO BUY)','Edge sealer (buy)']},
  {t:'Fit the sink base',do:'Assemble it and move the back-left leg to about 120 from the back edge. Slide it over the pipe, tight to the tiles. Level it to 882 at the top. Screw it to the tall cupboard\'s cover panel, then to the wall. Put an angle bracket inside, just in front of the notch.',
   checks:['Level at 882','Tight to the tiles','Drawers dry-fitted clear of the pipes'],tools:['Drill','Level'],parts:['METOD sink base (in the order)','MAXIMERA drawers + runners (in the order)','4 legs (in the order)','2–3 angle brackets (buy)','Wall fixings (buy)']},
  {t:'Fit panel 1',do:'Stand it over the pipe. Screw it through the sink base\'s left side, fix an angle bracket to the wall at the back about halfway up, and screw up into units 5 and 6.',
-  checks:['Plumb','Flush with the sink base front'],tools:['Drill'],parts:['Panel 1 (cut at stage 9)','1 angle bracket (buy)','4 × 25 screws (buy)']},
+  checks:['Plumb','Flush with the sink base front'],tools:['Drill'],parts:['Panel 1 (cut at stage 8)','1 angle bracket (buy)','4 × 25 screws (buy)']},
  {t:'Worktop, sink and tap',do:'Cut the worktop to the measured gap, mark and cut the sink hole, seal the edges, fit it and screw up through the top rails. Clip the sink in and fit the tap.',
   checks:['Hole 540 × 505 checked before cutting','Top at 910, level'],tools:['Jigsaw, fine laminate blade','3 and 8 mm bits','Masking tape'],parts:['JÄRSTORP worktop (in the order)','LÅNGUDDEN sink and clips (in the order)','SALLSJÖN tap (bought)','Sanitary silicone (buy)']},
- {t:'Plumber, then the splashback',do:'The plumber connects the trap to the upright waste and the tap hoses. Then for B: measure the niche, order the panel (2 smaller each way) and bond it over the packer and tiles on a silicone bead. For E: paint the plaster above the dado.',
-  checks:['Trap and tap connected, no leaks','Drawers clear the trap','B: panel flat and sealed, or E: painted'],tools:['Silicone gun'],parts:['LILLVIKEN trap (in the order)','B: panel + adhesive (buy) · E: paint']},
+ {t:'Plumber',do:'The plumber connects the trap to the upright waste and the tap hoses.',
+  checks:['Trap and tap connected, no leaks','Drawers clear the trap'],tools:[],parts:['LILLVIKEN trap (in the order)']},
  {t:'Fronts and finish',do:'Put the drawers in. Join the two tall doors with the UTRUSTA connecting fitting and hang them. Hang the doors on units 5, 6 and 8, fit the six handles, and adjust the hinges. Put the washer and dryer back.',
   checks:['Even gaps','Everything opens fully','Nothing rubs on a pipe','Electrician has fitted the sockets (tall cupboard, washer, dryer)'],tools:['Screwdriver'],parts:['MAXIMERA drawers + fronts (in the order)','12 UTRUSTA hinges (in the order)','6 BAGGANÄS handles (in the order)','UTRUSTA connecting fitting (TO BUY)','Door bumper for unit 5 (in the hinge packs)']},
  {t:'Finish',do:'Refit the skirting, cut to the tall cupboard\'s face. Silicone the worktop to the tiles and at both ends. Label the two valves. Fit the plinth: cut it to 1012, clip it on, and trim its bottom to the floor. Glue the oak reducer strip along the front edge of the dip. Bumper on the left wall where unit 5\'s handle meets it (about 1170 out, 2175 up).',
@@ -1930,27 +1928,27 @@ const STEPS=[
 ];
 let stepN=0;
 function stepsState(){try{return JSON.parse(localStorage.getItem('bd-steps')||'{}')}catch(e){return {}}}
+try{if(!localStorage.getItem('bd-steps-v2')){const o=JSON.parse(localStorage.getItem('bd-steps')||'{}'),n={};Object.keys(o).forEach(k=>{const i=+k.slice(1);if(i<7)n[k]=o[k];else if(i>7)n['s'+(i-1)]=o[k]});localStorage.setItem('bd-steps',JSON.stringify(n));localStorage.setItem('bd-steps-v2','1')}}catch(e){}
 function stepsSave(s){try{localStorage.setItem('bd-steps',JSON.stringify(s))}catch(e){}}
 function stageOf(m){ // which stage fits this piece; 0 = already there
   const n=m.userData.name||'',x=m.position.x*1000;
   if(/^Ply strip/.test(n))return 3; if(/^Rail$|Suspension rail/.test(n))return 4;
   if(/^(Filler 4|Wall unit 5|Wall unit 6|Unit 6 packer)/.test(n))return 5;
   if(/^(Tall cupboard 3|Cover panel, tall|Tall cupboard top fixing)/.test(n))return 6;
-  if(/^Leg/.test(n)||/^Back-left leg/.test(n))return x>U.tall[0]?6:10;
+  if(/^Leg/.test(n)||/^Back-left leg/.test(n))return x>U.tall[0]?6:9;
   if(/^(Top unit 8|Panel 7)/.test(n))return 7;
-  if(/^Splashback packer/.test(n))return 8;
-  if(/^Cut:/.test(n))return 9;
-  if(/^(Sink base|Sink base wall bracket)/.test(n))return 10;
-  if(/^Panel 1/.test(n))return 11;
-  if(/^Plinth/.test(n))return 15;
-  if(/^(Worktop|Sink rim|Sink bowl|Tap)/.test(n))return 12;
-  if(/^(Trap|Splashback panel)/.test(n))return 13;
-  if(/(drawer|Handle|Hinge|Door, unit|Tall cupboard doors|connecting fitting)/i.test(n))return 14;
+  if(/^Cut:/.test(n))return 8;
+  if(/^(Sink base|Sink base wall bracket)/.test(n))return 9;
+  if(/^Panel 1/.test(n))return 10;
+  if(/^Plinth/.test(n))return 14;
+  if(/^(Worktop|Sink rim|Sink bowl|Tap)/.test(n))return 11;
+  if(/^Trap/.test(n))return 12;
+  if(/(drawer|Handle|Hinge|Door, unit|Tall cupboard doors|connecting fitting)/i.test(n))return 13;
   return 0}
 function applySteps(){
   const cur=stepN+1;Object.values(R3.groups).forEach(g=>g.visible=true);
   R3.scene.traverse(o=>{if(!o.isMesh||!o.userData||o.userData.base===undefined)return;const s=stageOf(o);
-    o.visible=s<=cur&&!(s===9&&cur>9)&&!(s===3&&cur===2);if(o.material.emissive)o.material.emissive.setHex(s===cur?0x5a3a00:0)});
+    o.visible=s<=cur&&!(s===8&&cur>8)&&!(s===3&&cur===2);if(o.material.emissive)o.material.emissive.setHex(s===cur?0x5a3a00:0)});
   if(cur===2)R3.scene.traverse(o=>{if(o.isMesh&&/^Ply strip/.test(o.userData.name||'')){o.visible=true;o.material.transparent=true;o.material.opacity=.3}});
   const hl=new THREE.Box3();let any=false;R3.scene.traverse(o=>{if(o.isMesh&&o.visible&&stageOf(o)===cur&&o.userData.base!==undefined){hl.expandByObject(o);any=true}});
   if(!any)hl.set(new THREE.Vector3(mm(700),0,0),new THREE.Vector3(mm(1771),mm(cur===2?2700:600),mm(200)));
