@@ -1,0 +1,351 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><style>body{margin:0}</style>
+<title>Bathroom Room Checks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one reading column; each answer is a card with its drawing; measuring items are tick rows with their own drawing. Dark first. */
+:root{
+  --bg:#141714; --raise:#1e231e; --fg:#e9ece6; --muted:#9ea69c; --decide:#7aa7ff; --check:#ffb454; --ok:#5fd39a;
+  --body:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#f6f7f4; --raise:#ebeee8; --fg:#161a16; --muted:#5c665b; --decide:#2d5fc4; --check:#a35f00; --ok:#1e8a57; color-scheme:light}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font:17px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:900px;margin:0 auto;padding-block:48px 120px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(32px,6vw,52px)}
+h2{font-size:26px;display:flex;align-items:center;gap:12px}
+h3{font-size:20px}
+p{margin:0;max-width:66ch}
+.muted{color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.qa{background:var(--raise);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure img{width:100%;height:auto;border-radius:10px;display:block}
+figcaption{color:var(--muted);font-size:15px}
+figcaption b{color:var(--fg);font-size:18px}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:700px){.opts{grid-template-columns:minmax(0,1fr)}}
+table{border-collapse:collapse;font-size:15px;width:100%}
+td,th{text-align:left;padding:6px 10px 6px 0;vertical-align:top}
+th{color:var(--muted);font-weight:500}
+.tw{overflow-x:auto}
+.todo{display:flex;flex-direction:column;gap:12px}
+.todo label{display:flex;gap:12px;align-items:flex-start;background:var(--raise);border-radius:12px;padding:14px 16px;cursor:pointer}
+.todo input{width:20px;height:20px;margin:2px 0 0;flex:none}
+.todo b{font-weight:600;display:block}
+.todo .why{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+.todo .pic{display:block;margin-top:12px;max-width:520px}
+.todo .pic img{width:100%;border-radius:10px;display:block}
+.todo label:has(input:checked){opacity:.5}
+ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+a{color:inherit;text-underline-offset:3px}
+.theme{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:20;
+  font:600 13px var(--body);background:var(--raise);color:var(--fg);border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--decide);outline-offset:2px}
+</style>
+
+<button class="theme" id="theme" type="button">Light</button>
+
+<main>
+<section>
+  <h1>Room&nbsp;checks</h1>
+  <p>Only what's still open: one choice and one job. Everything decided is off this page; the oak strip for the step is on the shopping&nbsp;list.</p>
+</section>
+
+<section id="panel">
+  <h2><span class="dot" style="background:var(--decide)"></span>Pick one: the panel right of the&nbsp;sink</h2>
+  <div class="qa">
+    <p><b>Buying the extra panel gets you Plan.</b> It's 2200 long: floor to the top of the tall cupboard, not to the ceiling. Above that, the 62×80 you already have fills the last 400 (panel&nbsp;7).</p>
+    <p><b>Plan and Your idea cost the same</b> and need the same purchase. The only difference is a 12&nbsp;mm beige strip. Plan runs it from floor to ceiling between the sink and tall cupboard. Your idea shows it only above the worktop and moves everything left of the tall cupboard 12&nbsp;mm.</p>
+    <p><b>Go with Plan.</b> It's IKEA's own layout and the model is already drawn that way, so nothing moves.</p>
+    <div class="opts">
+      <figure><img data-d="optA" alt="Plan option: a beige strip runs floor to ceiling between sink and tall cupboard"><figcaption><b>Plan</b><br>A 12&nbsp;mm beige panel, floor to 2280, between the sink base and tall cupboard, with panel&nbsp;7 (from the 62×80) above. Buy a second 62×220 for panel&nbsp;1.</figcaption></figure>
+      <figure><img data-d="optB" alt="Your idea: units touch; a beige panel only between worktop and unit 6"><figcaption><b>Your idea</b><br>Everything left of the tall cupboard moves 12 right, so units touch top and bottom. A 1170 panel cut from our 62×220 sits on the worktop against the tall cupboard. No panel&nbsp;7. Still buy a 62×220 for panel&nbsp;1.</figcaption></figure>
+      <figure><img data-d="optC" alt="No buy: the tall cupboard's white side shows above the worktop"><figcaption><b>No buy</b><br>As Your idea, with no panel. Our 62×220 becomes panel&nbsp;1, so nothing to buy. The tall cupboard's white side shows between the worktop and unit&nbsp;6, beside beige&nbsp;doors.</figcaption></figure>
+    </div>
+    </div>
+</section>
+
+<section id="job">
+  <h2><span class="dot" style="background:var(--check)"></span>The one job in the&nbsp;room</h2>
+  <div class="qa">
+    <p><b>Find the studs.</b> You said the wall is hollow and you can't see any glue blobs behind the board. That means plasterboard on studs, so the cupboards must screw into the studs.</p>
+    <p>Run the stud finder across the whole back wall at the height of the tops of the wall cupboards, about 2.6&nbsp;m up. Pencil a mark at each stud. If it beeps for a cable anywhere, mark that too.</p>
+    <p class="muted">The drawer and sink checks wait until the boxes are open. I'll ask then.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+const PAL={
+ dark:{bg:'#1e231e',fg:'#e9ece6',mu:'#9ea69c',wall:'#3a403a',plaster:'#4a5049',sh:'#4d6876',dado:'#6a6452',band:'#857c63',trim:'#ffb454',beige:'#d8c59f',white:'#f2f2ee',top:'#9a7448',floor:'#2b302a',rec:'#171a17',ar:'#7aa7ff',red:'#ff6b5b',leg:'#ff8a5c',wash:'#5d646c',brick:'#9a5a45',wood:'#b89060'},
+ light:{bg:'#ebeee8',fg:'#161a16',mu:'#5c665b',wall:'#c3c7bf',plaster:'#d6d9d2',sh:'#9db4c0',dado:'#c9bea3',band:'#b3a688',trim:'#c77800',beige:'#d8c59f',white:'#ffffff',top:'#9a7448',floor:'#d2d5ce',rec:'#b6b9b1',ar:'#2d5fc4',red:'#c4321f',leg:'#b6461b',wash:'#8c939b',brick:'#a8644d',wood:'#b89060'}};
+const n=v=>Math.round(v*10)/10;
+function shade(h,k){const c=parseInt(h.slice(1),16);let r=c>>16,g=c>>8&255,b=c&255;
+  const m=v=>Math.max(0,Math.min(255,Math.round(k>1?v+(255-v)*(k-1):v*k)));return '#'+((1<<24)|(m(r)<<16)|(m(g)<<8)|m(b)).toString(16).slice(1)}
+function svg(w,h,b,P){const mk=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${c}"/></marker>`;
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w*2}" height="${h*2}" font-family="-apple-system,Helvetica,Arial,sans-serif"><defs>${mk('a',P.ar)}${mk('r',P.red)}${mk('f',P.fg)}</defs><rect width="${w}" height="${h}" fill="${P.bg}"/>${b}</svg>`)}
+const R=(x,y,w,h,fill,ex='')=>`<rect x="${n(x)}" y="${n(y)}" width="${n(Math.max(w,0))}" height="${n(Math.max(h,0))}" fill="${fill}" ${ex}/>`;
+const T=(x,y,t,fill,sz=12,ex='')=>`<text x="${n(x)}" y="${n(y)}" fill="${fill}" font-size="${sz}" ${ex}>${t}</text>`;
+const L=(x1,y1,x2,y2,c,w=1.4,ex='')=>`<line x1="${n(x1)}" y1="${n(y1)}" x2="${n(x2)}" y2="${n(y2)}" stroke="${c}" stroke-width="${w}" ${ex}/>`;
+const dim=(x1,y1,x2,y2,c,id)=>L(x1,y1,x2,y2,c,1.4,`marker-start="url(#${id})" marker-end="url(#${id})"`);
+const ptr=(x1,y1,x2,y2,c,id)=>L(x1,y1,x2,y2,c,1.2,`marker-end="url(#${id})"`);
+const num=(x,y,t,P)=>`<circle cx="${n(x)}" cy="${n(y)}" r="10" fill="${P.ar}"/>`+T(x,y+4,t,P.bg,12,'text-anchor="middle" font-weight="700"');
+
+/* ---- options, oblique view from front-left, above ---- */
+function opt(o,P){
+  const k=.2,x0=700,W=290,H=600,px=(x,y,z)=>[((x-x0)-.45*(620-y)+300)*k+4,(H-6)-(z+.3*(620-y))*k];
+  const poly=(pts,c)=>`<polygon points="${pts.map(p=>px(...p).map(n).join(',')).join(' ')}" fill="${c}" stroke="${P.bg}" stroke-width=".5" stroke-linejoin="round"/>`;
+  const box=(a,b,c,d,e,f,front,side,{top=1,left=1,topc}={})=>(top?poly([[a,c,f],[b,c,f],[b,d,f],[a,d,f]],shade(topc||side,1.06)):'')+(left?poly([[a,c,e],[a,d,e],[a,d,f],[a,c,f]],shade(side,.8)):'')+poly([[a,d,e],[b,d,e],[b,d,f],[a,d,f]],front);
+  const gapline=(a,b,z,y=616)=>poly([[a,y,z-1.5],[b,y,z-1.5],[b,y,z+1.5],[a,y,z+1.5]],P.bg);
+  const s=o==='A'?0:12, sx=756+s; let g='';
+  g+=poly([[x0,620+300,0],[1771,620+300,0],[1771,0,0],[x0,0,0]],P.floor);
+  g+=poly([[x0,0,0],[1771,0,0],[1771,0,2760],[x0,0,2760]],P.plaster);
+  g+=poly([[x0,0,0],[789,0,0],[789,0,2350],[x0,0,2350]],P.sh);
+  g+=poly([[789,0,0],[1771,0,0],[1771,0,1300],[789,0,1300]],P.dado);
+  g+=poly([[789,0,1300],[1771,0,1300],[1771,0,1450],[789,0,1450]],P.band);
+  g+=poly([[784,0,0],[794,0,0],[794,0,2350],[784,0,2350]],P.trim);
+  g+=poly([[1771,0,0],[1771,920,0],[1771,920,2760],[1771,0,2760]],shade(P.plaster,.85));
+  // base row, right to left
+  g+=box(1368,1768,0,616,80,2280,P.beige,P.white,{top:0})+gapline(1368,1768,1480);
+  if(o==='A')g+=box(1356,1368,0,620,80,2280,P.beige,P.beige,{top:0});
+  g+=box(sx,sx+600,0,616,80,882,P.beige,P.white,{top:0})+gapline(sx,sx+600,480);
+  g+=box(sx,1768,548,566,0,80,P.beige,P.beige,{top:0});
+  g+=box(sx,sx+600,0,635,882,910,P.top,P.top,{topc:P.top});
+  if(o==='B')g+=box(1356,1368,0,620,910,2080,P.beige,P.beige,{top:0});
+  g+=box(744+s,756+s,0,620,0,2080,P.beige,P.beige,{top:0});
+  // wall units
+  g+=box(1368,1768,0,616,2280,2680,P.beige,P.white,{topc:P.white});
+  if(o==='A')g+=box(1356,1368,0,620,2280,2680,P.beige,P.beige);
+  g+=box(sx,sx+600,0,616,2080,2680,P.beige,P.white,{topc:P.white});
+  g+=box(x0,sx,0,616,2080,2680,P.beige,P.white,{left:0,topc:P.white});
+  // callout
+  const [cx,cy]=px(1362,600,1500);
+  const lab=o==='A'?'beige strip, floor to top':o==='B'?'beige panel, worktop to unit 6':'white cupboard side';
+  g+=`<circle cx="${n(cx)}" cy="${n(cy)}" r="5" fill="none" stroke="${P.red}" stroke-width="2"/>`;
+  return svg(W,H,g+ptr(W-60,cy-70,cx+3,cy-6,P.red,'r')+T(W-4,cy-76,lab,P.fg,12,'text-anchor="end" font-weight="600"'),P);
+}
+
+/* ---- 3 mm: two rows of widths ---- */
+function gap(P){
+  const W=880,H=260,k=820/1771,ox=30,X=x=>ox+x*k;let g='';
+  g+=R(ox-12,24,12,212,P.wall)+R(X(1771),24,12,212,P.wall);
+  const row=(y,h,segs)=>segs.forEach(([a,b,name,w,c])=>{g+=R(X(a),y,(b-a)*k,h,c,`stroke="${P.bg}" stroke-width="1"`);if(name)g+=T(X((a+b)/2),y+h/2-2,name,'#161a16',12,'text-anchor="middle" font-weight="600"')+T(X((a+b)/2),y+h/2+13,w,'#3a3f3a',11,'text-anchor="middle"')});
+  g+=T(ox,18,'Wall units, 2080–2680 up',P.mu,12);
+  row(50,56,[[0,156,'filler 4','156, cut to fit',P.beige],[156,756,'unit 5','600',P.white],[756,1356,'unit 6','600',P.white],[1356,1368,'','',P.beige],[1368,1768,'unit 8','400',P.white]]);
+  g+=T(ox,140,'Floor row',P.mu,12);
+  g+=R(ox,150,730*k,50,P.rec)+T(X(365),180,'10 mm step (washer)',P.mu,11,'text-anchor="middle"');
+  row(150,50,[[744,756,'','',P.beige],[756,1356,'sink base','600',P.white],[1356,1368,'','',P.beige],[1368,1768,'tall cupboard','400',P.white]]);
+  g+=ptr(X(1362),40,X(1362),48,P.mu,'f')+T(X(1362),36,'panel 7, 12',P.mu,11,'text-anchor="middle"');
+  g+=dim(X(0),222,X(1771),222,P.mu,'f')+R(X(885)-70,214,140,16,P.bg)+T(X(885),226,'1771 wall to wall',P.fg,12,'text-anchor="middle"');
+  g+=`<circle cx="${n(X(1770))}" cy="128" r="13" fill="none" stroke="${P.red}" stroke-width="2"/>`+T(X(1770)-18,132,'3 mm',P.red,13,'text-anchor="end" font-weight="700"');
+  g+=ptr(X(737)+40,214,X(737),202,P.ar,'a')+T(X(737)+44,212,'14 mm to the step',P.ar,11);
+  return svg(W,H,g,P);
+}
+
+/* ---- floor: tall cupboard, unit 8, rail ---- */
+function floor(P){
+  const W=520,H=560,k=.18,ox=20-1240*k,Z=z=>H-30-z*k,X=x=>ox+x*k;let g='';
+  g+=R(0,Z(0),W,30,P.floor);
+  g+=R(X(1240),Z(2680),(1356-1240)*k,600*k,P.beige)+R(X(1240),Z(910),(1356-1240)*k,28*k,P.top)+R(X(1240),Z(882),(1356-1240)*k,802*k,P.beige);
+  g+=R(X(1356),Z(2280),12*k,2200*k,P.beige);
+  g+=R(X(1368),Z(2280),400*k,2200*k,P.beige,`stroke="${P.bg}"`)+R(X(1368),Z(1481),400*k,2,P.bg);
+  g+=R(X(1368),Z(2680),400*k,400*k,P.beige,`stroke="${P.bg}"`);
+  [1388,1738].forEach(x=>g+=R(X(x),Z(80),14*k*1.6,80*k,P.leg));
+  g+=L(X(1200),Z(2630),X(1780),Z(2630),P.ar,2,'stroke-dasharray="6 4"');
+  g+=R(X(1368)-4,Z(2280)-2,400*k+8,4,P.red);
+  const ax=X(1790)+14;
+  g+=ptr(ax,Z(2630),X(1780)+2,Z(2630),P.ar,'a')+T(ax+4,Z(2630)-4,'Rail. Put it 350 above the tall',P.fg,12)+T(ax+4,Z(2630)+11,'cupboard’s top, marked after levelling.',P.fg,12);
+  g+=ptr(ax,Z(2280),X(1768)+3,Z(2280),P.red,'r')+T(ax+4,Z(2280)-4,'Tall top meets unit 8 here.',P.fg,12,'font-weight="600"')+T(ax+4,Z(2280)+11,'The one joint with no give.',P.fg,12);
+  g+=ptr(ax,Z(40),X(1768)-8,Z(40),P.leg,'f')+T(ax+4,Z(60),'Legs 75–95, set at 80:',P.fg,12)+T(ax+4,Z(60)+15,'5 down, 15 up.',P.fg,12);
+  g+=T(ax+4,Z(900),'Sink base: levelled to 882 on its own.',P.mu,12)+T(ax+4,Z(900)+15,'Nothing above it is tight.',P.mu,12);
+  return svg(W,H,g,P);
+}
+
+/* ---- step: plan from above ---- */
+function step(P){
+  const W=880,H=490,k=.44,ox=40,oy=34,X=x=>ox+x*k,Y=y=>oy+y*k;let g='';
+  g+=R(ox-14,oy-14,1771*k+28,14,P.wall)+R(ox-14,oy-14,14,1000*k+14,P.wall)+R(X(1771),oy-14,14,1000*k+14,P.wall);
+  g+=T(X(885),oy-18,'back wall',P.mu,11,'text-anchor="middle"');
+  g+=R(ox,oy,1771*k,1000*k,P.floor);
+  g+=R(ox,oy,730*k,750*k,P.rec)+T(X(400),Y(820),'dip where the shower tray was: 10 mm lower',P.mu,12,'text-anchor="middle"');
+  g+=R(ox,oy,100*k,1000*k,P.wall)+T(X(50),Y(880),'boxing',P.mu,10,'text-anchor="middle"');
+  g+=R(X(100),Y(75),595*k,640*k,P.wash)+T(X(397),Y(380),'washer + dryer',P.fg,12,'text-anchor="middle" font-weight="600"')+T(X(397),Y(380)+16,'all four feet in the dip',P.fg,11,'text-anchor="middle"');
+  g+=R(X(756),Y(0),600*k,590*k,P.white,`fill-opacity=".14" stroke="${P.mu}" stroke-width="1"`)+T(X(1056),Y(300),'sink base',P.fg,12,'text-anchor="middle"');
+  g+=R(X(1368),Y(0),400*k,590*k,P.white,`fill-opacity=".14" stroke="${P.mu}" stroke-width="1"`)+T(X(1568),Y(300),'tall cupboard',P.fg,12,'text-anchor="middle"');
+  g+=R(X(1356),Y(0),12*k,620*k,P.beige)+R(X(744),Y(0),12*k,620*k,P.beige);
+  g+=R(X(756),Y(548),1012*k,18*k,P.beige)+T(X(1056),Y(600)+8,'plinth',P.mu,11,'text-anchor="middle"');
+  [[781,120],[781,550],[1331,110],[1331,550],[1393,110],[1393,550],[1743,110],[1743,550]].forEach(([x,y])=>g+=`<circle cx="${n(X(x))}" cy="${n(Y(y))}" r="5" fill="${P.leg}"/>`);
+  g+=ptr(X(744)+90,Y(690),X(740),Y(620),P.red,'r')+T(X(744)+94,Y(690)+4,'panel 1: 14 mm from the step',P.fg,12,'font-weight="600"');
+  g+=ptr(X(781)+80,Y(440),X(781)+5,Y(540),P.leg,'f')+T(X(781)+84,Y(440)-2,'nearest leg: 25+ mm clear',P.fg,12);
+  g+=T(X(1771),H-10,'legs',P.leg,12,'text-anchor="end"');
+  return svg(W,H,g,P);
+}
+
+/* ---- back wall map ---- */
+function zones(P){
+  const W=520,H=660,k=.2,ox=60,oy=20,X=x=>ox+x*k,Z=z=>oy+(2850-z)*k;let g='';
+  g+=R(X(0),Z(2850),1771*k,2850*k,P.plaster);
+  g+=R(X(0),Z(2350),789*k,2350*k,P.sh)+R(X(789),Z(1300),982*k,1300*k,P.dado)+R(X(789),Z(1450),982*k,150*k,P.band);
+  g+=R(X(784),Z(2350),3,2350*k,P.trim)+R(X(0),Z(2350),794*k,2.5,'none',`stroke="${P.trim}" stroke-width="1.5" stroke-dasharray="4 3"`);
+  g+=R(X(756),Z(1450),600*k,540*k,P.ar,'fill-opacity=".28"');
+  const out=(a,b,c,d)=>R(X(a),Z(d),(b-a)*k,(d-c)*k,'none',`stroke="${P.fg}" stroke-opacity=".6" stroke-width="1" stroke-dasharray="4 3"`);
+  [[756,1356,80,910],[1368,1768,80,2280],[156,756,2080,2680],[756,1356,2080,2680],[1368,1768,2280,2680],[744,756,0,2080]].forEach(r=>g+=out(...r));
+  g+=T(X(390),Z(1300),'shower tiles',P.fg,13,'text-anchor="middle" font-weight="600"');
+  g+=T(X(1560),Z(700),'dado tiles',P.fg,13,'text-anchor="middle" font-weight="600"')+T(X(1560),Z(1375)+4,'dado',P.fg,11,'text-anchor="middle"');
+  g+=T(X(1060),Z(1800),'plaster',P.fg,13,'text-anchor="middle"');
+  g+=T(X(330),Z(2350)-6,'trim along the top?',P.trim,11);
+  g+=T(X(790),Z(0)+16,'trim',P.trim,11,'text-anchor="middle"');
+  g+=T(X(1056),Z(2380),'unit 6',P.mu,11,'text-anchor="middle"')+T(X(456),Z(2200),'unit 5',P.mu,11,'text-anchor="middle"')+T(X(1568),Z(1900),'tall',P.mu,11,'text-anchor="middle"')+T(X(1056),Z(500),'sink base',P.mu,11,'text-anchor="middle"');
+  g+=num(X(789)-14,Z(910),'1',P)+num(X(789)+14,Z(1100),'2',P)+num(X(200),Z(2350),'3',P)+num(X(1771)-12,Z(1700),'4',P)+num(X(737),Z(0)-14,'5',P)+num(X(1200),Z(1180),'7',P);
+  g+=T(X(0),Z(0)+16,'left wall',P.mu,11)+T(X(1771),Z(0)+16,'right wall',P.mu,11,'text-anchor="end"');
+  return svg(W,H,g,P);
+}
+
+/* ---- trim, seen from above ---- */
+function trim(P){
+  const W=560,H=250,k=3,ox=10,X=x=>ox+(x-700)*k,D=d=>190-d*k;let g='';
+  g+=R(0,D(0),W,60,P.wall)+T(10,D(0)+40,'wall',P.mu,12);
+  g+=R(X(700),D(15),84*k,15*k,P.sh)+T(X(742),D(0)-14,'shower tile',P.bg,12,'text-anchor="middle" font-weight="600"');
+  g+=R(X(794),D(18),86*k,18*k,P.dado)+T(X(840),D(0)-16,'dado tile',P.bg,12,'text-anchor="middle" font-weight="600"');
+  g+=R(X(784),D(21),10*k,21*k,P.trim)+T(X(789),D(21)-62,'trim',P.trim,12,'text-anchor="middle" font-weight="600"');
+  g+=R(X(712),D(21)-9,156*k,9,P.fg,'fill-opacity=".85"')+T(X(712),D(21)-14,'ruler, flat across',P.fg,12);
+  g+=dim(X(740),D(21),X(740),D(15),P.red,'r')+T(X(740)+8,D(17)+4,'gap 1',P.red,12,'font-weight="700"');
+  g+=dim(X(830),D(21),X(830),D(18),P.red,'r')+T(X(830)+8,D(18)+2,'gap 2',P.red,12,'font-weight="700"');
+  g+=T(W-10,20,'seen from above, at about 910 up',P.mu,11,'text-anchor="end"');
+  return svg(W,H,g,P);
+}
+
+/* ---- right wall, level upright ---- */
+function plumb(P){
+  const W=460,H=420;let g='';
+  g+=R(0,380,W,40,P.floor);
+  g+=`<polygon points="300,380 460,380 460,40 290,40" fill="${P.plaster}"/>`;
+  g+=T(380,220,'right wall',P.fg,13,'text-anchor="middle"');
+  g+=R(278,52,10,320,P.fg)+T(270,46,'long level, upright',P.fg,12,'text-anchor="end"');
+  g+=R(120,90,150,290,P.beige,'fill-opacity=".35"')+T(195,240,'tall cupboard',P.fg,12,'text-anchor="middle"');
+  g+=dim(289,368,299,368,P.red,'r')+ptr(330,350,302,366,P.red,'r')+T(334,346,'gap at the bottom:',P.red,12,'font-weight="700"')+T(334,361,'wall leans in. Note it.',P.red,12);
+  g+=T(20,24,'Seen from the front. Do it near the back and near the front.',P.mu,12);
+  return svg(W,H,g,P);
+}
+
+/* ---- step edge at panel 1 ---- */
+function edge(P){
+  const W=460,H=400,k=.5,x0=560,ox=20,oy=24,X=x=>ox+(x-x0)*k,Y=y=>oy+y*k;let g='';
+  g+=R(0,oy-12,W,12,P.wall)+T(W-10,oy-16,'back wall',P.mu,11,'text-anchor="end"');
+  g+=R(X(x0),Y(0),(900-x0)*k,720*k,P.floor)+R(X(x0),Y(0),(730-x0)*k,720*k,P.rec);
+  g+=R(X(x0),Y(75),(695-x0)*k,640*k,P.wash)+T(X(625),Y(400),'washer',P.fg,11,'text-anchor="middle"');
+  g+=R(X(744),Y(0),12*k,620*k,P.beige)+T(X(756)+8,Y(330),'panel 1 (744)',P.fg,12,'font-weight="600"');
+  g+=R(X(730)-1,Y(0),2,720*k,P.trim)+T(X(730)-4,Y(700),'step edge',P.trim,11,'text-anchor="end"');
+  [[30,'at the back wall'],[620,'620 out']].forEach(([y,t])=>{g+=ptr(X(x0),Y(y),X(730),Y(y),P.ar,'a')+T(X(x0)+4,Y(y)+16,'from the left wall, '+t,P.ar,11)});
+  g+=T(X(756)+8,Y(360),'Plan: step at 730.',P.fg,12)+T(X(756)+8,Y(360)+15,'Over 740? Tell me.',P.fg,12);
+  return svg(W,H,g,P);
+}
+
+/* ---- wall builds ---- */
+function walls(P){
+  const W=720,H=300;let g='';
+  const cap=(x,a,b)=>T(x+110,252,a,P.fg,13,'text-anchor="middle" font-weight="600"')+T(x+110,270,b,P.mu,11,'text-anchor="middle"');
+  const room=(x)=>T(x+110,28,'room',P.mu,11,'text-anchor="middle"')+ptr(x+150,20,x+150,58,P.fg,'f')+T(x+156,24,'screwdriver',P.mu,10);
+  let x=0; g+=room(x)+R(x+10,60,200,19,P.plaster)+R(x+90,79,30,120,P.wood)+T(x+150,140,'hollow',P.mu,11,'text-anchor="middle"')+cap(x,'1 · Board on studs','nothing behind the board');
+  x=240; g+=room(x)+R(x+10,60,200,19,P.plaster)+[40,110,180].map(d=>`<ellipse cx="${x+d}" cy="${92}" rx="14" ry="12" fill="${P.mu}"/>`).join('')+R(x+10,104,200,95,P.brick)+cap(x,'2 · Board on dabs','small gap, then brick');
+  x=480; g+=room(x)+R(x+10,60,200,12,P.plaster)+R(x+10,72,200,127,P.brick)+cap(x,'3 · Plaster on brick','brick straight away');
+  g+=T(10,H-6,'Seen from above. Tell me 1, 2 or 3, and the gap if you can see it.',P.mu,11);
+  return svg(W,H,g,P);
+}
+
+
+/* ---- step cover, section through the front edge ---- */
+function cover(P){
+  const W=600,H=230;let g='';
+  g+=R(20,160,300,50,P.wall)+R(320,140,260,70,P.wall);
+  g+=R(60,60,200,100,P.wash)+T(160,115,'washer',P.fg,13,'text-anchor="middle"');
+  g+=`<polygon points="284,160 320,160 320,140 380,140 380,136 316,136" fill="${P.wood}"/>`;
+  g+=ptr(400,90,340,134,P.fg,'f')+T(404,86,'oak reducer strip',P.fg,13,'font-weight="600"')+T(404,102,'sits over the edge, slopes down',P.mu,12);
+  g+=T(150,190,'dip, 10 lower',P.mu,12,'text-anchor="middle"')+T(450,180,'floor',P.mu,12,'text-anchor="middle"');
+  g+=T(W-10,22,'Section through the front edge of the dip (step drawn 2× deep)',P.mu,11,'text-anchor="end"');
+  return svg(W,H,g,P);
+}
+
+const D={cover,optA:P=>opt('A',P),optB:P=>opt('B',P),optC:P=>opt('C',P),gap,floor,step,zones,trim,plumb,edge,walls};
+function draw(t){const P=PAL[t];document.querySelectorAll('img[data-d]').forEach(im=>{im.src=D[im.dataset.d](P)})}
+const b=document.getElementById('theme'),r=document.documentElement;
+const sysLight=()=>false;
+let t=null;try{t=localStorage.getItem('theme')}catch(e){}
+function set(v){t=v;if(v)r.setAttribute('data-theme',v);else r.removeAttribute('data-theme');
+  const cur=v||(sysLight()?'light':'dark');b.textContent=cur==='light'?'Dark':'Light';draw(cur);try{v?localStorage.setItem('theme',v):0}catch(e){}}
+set(t);b.onclick=()=>set((t||(sysLight()?'light':'dark'))==='light'?'dark':'light');
+document.querySelectorAll('.todo input[data-k]').forEach(c=>{try{c.checked=localStorage.getItem('rc-'+c.dataset.k)==='1'}catch(e){}
+  c.onchange=()=>{try{localStorage.setItem('rc-'+c.dataset.k,c.checked?'1':'0')}catch(e){}}});
+})();
+</script>
+<script>
+/* Image zoom for every HTML page Claude makes.
+   Click any image → full-screen view. Close with ← Back, Esc, or browser/phone back.
+   Arrow keys / swipe move between images. Paste inside a <script> at the end of <body>. */
+(function () {
+  const css = `
+  .zv{position:fixed;inset:0;z-index:99999;background:rgba(10,10,10,.96);display:none;
+      align-items:center;justify-content:center;touch-action:pinch-zoom}
+  .zv.on{display:flex}
+  .zv img{max-width:94vw;max-height:88vh;object-fit:contain;cursor:zoom-out}
+  .zv-back{position:fixed;top:16px;left:16px;padding:10px 16px;border:0;border-radius:999px;
+      background:#fff;color:#111;font:600 15px/1 system-ui,sans-serif;cursor:pointer;z-index:100000}
+  .zv-n{position:fixed;top:24px;right:20px;color:#aaa;font:13px/1 system-ui,sans-serif}
+  img.zv-ok{cursor:zoom-in}`;
+  const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+
+  const box = document.createElement('div'); box.className = 'zv';
+  box.innerHTML = '<button class="zv-back">&larr; Back</button><img alt=""><span class="zv-n"></span>';
+  document.body.appendChild(box);
+  const big = box.querySelector('img'), num = box.querySelector('.zv-n');
+  let list = [], i = 0;
+
+  const imgs = () => [...document.images].filter(im => !box.contains(im));
+  function show(n) {
+    i = (n + list.length) % list.length;
+    big.src = list[i].currentSrc || list[i].src; big.alt = list[i].alt || '';
+    num.textContent = list.length > 1 ? `${i + 1} / ${list.length}` : '';
+  }
+  function open(im) {
+    list = imgs(); show(list.indexOf(im)); box.classList.add('on');
+    history.pushState({zv: 1}, '');
+  }
+  function close(fromPop) {
+    if (!box.classList.contains('on')) return;
+    box.classList.remove('on');
+    if (!fromPop && history.state && history.state.zv) history.back();
+  }
+
+  document.addEventListener('click', e => {
+    const im = e.target.closest('img');
+    if (im && !box.contains(im) && !im.closest('a')) { e.preventDefault(); open(im); }
+  });
+  box.querySelector('.zv-back').onclick = () => close();
+  box.addEventListener('click', e => { if (e.target === box || e.target === big) close(); });
+  addEventListener('popstate', () => close(true));
+  addEventListener('keydown', e => {
+    if (!box.classList.contains('on')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+  let x0 = null;
+  box.addEventListener('touchstart', e => { x0 = e.touches.length === 1 ? e.touches[0].clientX : null; });
+  box.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  const mark = () => imgs().forEach(im => im.classList.add('zv-ok'));
+  mark(); new MutationObserver(mark).observe(document.body, {childList: true, subtree: true});
+})();
+
+</script>
