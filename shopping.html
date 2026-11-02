@@ -1,0 +1,162 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><style>body{margin:0}</style>
+<title>Bathroom Shopping List</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one column; your to-do list, then the shopping list grouped by shop, each line tickable. */
+:root{
+  --bg:#141714; --raise:#1e231e; --fg:#e9ece6; --muted:#9ea69c; --buy:#ff8a5c; --check:#ffb454; --decide:#7aa7ff; --ok:#5fd39a;
+  --body:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#f6f7f4; --raise:#ebeee8; --fg:#161a16; --muted:#5c665b; --buy:#b6461b; --check:#a35f00; --decide:#2d5fc4; --ok:#1e8a57;
+  color-scheme:light;
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font:17px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:860px;margin:0 auto;padding-block:48px 120px;display:flex;flex-direction:column;gap:64px}
+h1,h2{text-wrap:balance;margin:0;line-height:1.12}
+h1{font-size:clamp(32px,6vw,52px)}
+h2{font-size:26px;display:flex;align-items:center;gap:12px}
+p{margin:0;max-width:64ch}
+.muted{color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.items{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--raise);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:8px 24px}
+@media (max-width:640px){.item{grid-template-columns:minmax(0,1fr)}}
+.item b{font-size:18px}
+.item .why{color:var(--muted);font-size:15px}
+.get{font-size:16px}
+.art{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px}
+h3{margin:8px 0 0;font-size:18px}
+.todo{display:flex;flex-direction:column;gap:10px}
+.todo label{display:flex;gap:12px;align-items:flex-start;background:var(--raise);border-radius:12px;padding:14px 16px;cursor:pointer}
+.todo input{width:20px;height:20px;margin:2px 0 0;flex:none}
+.todo b{font-weight:600;display:block}
+.todo .why{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+.todo label:has(input:checked){opacity:.5}
+.qty{font-weight:500;color:var(--buy);white-space:nowrap;margin-left:6px;font-variant-numeric:tabular-nums}
+ul.ok{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+a{color:inherit;text-underline-offset:3px}
+.theme{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:20;
+  font:600 13px var(--body);background:var(--raise);color:var(--fg);border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+button:focus-visible{outline:2px solid var(--decide);outline-offset:2px}
+</style>
+
+<button class="theme" id="theme" type="button">Light</button>
+
+<main>
+<section>
+  <h1>Your list and what to&nbsp;buy</h1>
+  <p>Only what's still open. Anything decided, bought or settled came off on 2&nbsp;November.</p>
+</section>
+
+<section>
+  <h2><span class="dot" style="background:var(--decide)"></span>Your list</h2>
+  <p class="muted">Tick as you go; ticks stay on this device. Open the <a href="index.html">model</a> for any position.</p>
+  <h3>Before anything</h3>
+  <div class="todo">
+    <label><input type="checkbox" data-k="t1"><span><b>Electrician: get the cable route into the tall cupboard, tape it on the wall and photograph it. Ask about Part P and an RCD, and sockets for the washer and dryer.</b><span class="why">Stage 1 and the tall cupboard's cable hole depend on it.</span></span></label>
+    <label><input type="checkbox" data-k="t2"><span><b>Plumber: confirm the valves go above 480, the floor waste isn't being rerouted, the tap hose thread and length suit the valves, and how the old shower was fed and capped.</b><span class="why">Decides the notches, the drawer clearance and where it's safe to drill.</span></span></label>
+    <label><input type="checkbox" data-k="t3"><span><b>Plumber: book visit 2 at least 24 h after the worktop and sink go in. Add the washer feed, drain and a leak test.</b><span class="why">Silicone needs a day before the trap goes on.</span></span></label>
+    <label><input type="checkbox" data-k="t4"><span><b>Decide: washer and dryer come out, or stay in and get covered.</b><span class="why">Stage 1 and the last stage must say the same.</span></span></label>
+  </div>
+  <h3>In the room</h3>
+  <div class="todo">
+    <label><input type="checkbox" data-k="r1"><span><b>Pick the panel right of the sink: Plan (recommended), Your idea or No buy.</b><span class="why">Pictures on <a href="checks.html">Room checks</a>. Plan and Your idea both need the 62×220 below.</span></span></label>
+    <label><input type="checkbox" data-k="r2"><span><b>Stud finder along the back wall, about 2.6&nbsp;m up. Pencil a mark at each stud.</b><span class="why">Sets how many anchors to buy.</span></span></label>
+  </div>
+  <h3>When the boxes are open</h3>
+  <div class="todo">
+    <label><input type="checkbox" data-k="r3"><span><b>Drawer and sink check, before any cut. I'll walk you through it then.</b></span></label>
+  </div>
+</section>
+
+<section>
+  <h2><span class="dot" style="background:var(--buy)"></span>Shopping list, by&nbsp;shop</h2>
+  <p class="muted">The number is what you'll actually use: buy the smallest pack that covers&nbsp;it.</p>
+
+  <h3>IKEA · £46</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b1"><span><b>HAVSTORP cover panel 62×220, beige <span class="qty">× 1</span></b><span class="why">Panel 1, beside the washer. Skip it only if you pick No buy. 104.752.53 · £42</span></span></label>
+    <label><input type="checkbox" data-k="b3"><span><b>UTRUSTA connection fitting for doors <span class="qty">× 1</span></b><span class="why">Joins the tall cupboard's two doors so they open as one. 1 fitting, 4 screws and a template. 303.669.17 · £4</span></span></label>
+  </div>
+
+  <h3>B&amp;Q, timber and cutting desk</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b6"><span><b>18&nbsp;mm plywood, one 2440 × 607 sheet <span class="qty">× 1</span></b><span class="why">Ask the desk to cut: strip 1780 × 130 (trimmed to fit on the day), packer 550 × 60 (unit 6), packer 388 × 190 (tall cupboard top and unit 8), pad 100 × 100 (sink base leg) and one 18 × 18 × 600 strip (filler 4's corner blocks).</span></span></label>
+    <label><input type="checkbox" data-k="b7"><span><b>3&nbsp;mm hardboard, smallest sheet or an offcut <span class="qty">× 1</span></b><span class="why">One 560 × 40 strip behind unit 5's bottom, glued to the shower tiles.</span></span></label>
+    <label><input type="checkbox" data-k="b31"><span><b>Oak threshold reducer strip, 900 long <span class="qty">× 1</span></b><span class="why">Covers the front edge of the 10&nbsp;mm step, about 730, in front of the washer. Glue it down.</span></span></label>
+  </div>
+
+  <h3>B&amp;Q, screws and fixings</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b8"><span><b>Wood screw 5.0 × 80, countersunk <span class="qty">need 12–18</span></b><span class="why">Strip and rail into the studs: 3 per stud, about 4 studs, so 12. Up to 6 more wherever a packer or bracket lands on a stud. Also does the two tile-to-stud fixings.</span></span></label>
+    <label><input type="checkbox" data-k="b9"><span><b>M5 metal hollow-wall anchor, grip range covering 28–35&nbsp;mm <span class="qty">need up to 13</span></b><span class="why">Strip 5, unit 6 packer 2, tall packer 4, two tile spots 2. One fewer for every stud you hit, so buy after the stud scan. Note the hole size on the pack: that's your tile bit.</span></span></label>
+    <label><input type="checkbox" data-k="b10"><span><b>Pan-head wood screw 4.0 × 16 <span class="qty">need 23</span></b><span class="why">Rail into the ply between studs 9; brackets into 18&nbsp;mm IKEA boards 8; the moved leg block 2; curtain into unit 5 4.</span></span></label>
+    <label><input type="checkbox" data-k="b11"><span><b>Wood screw 4.0 × 40 <span class="qty">need 12</span></b><span class="why">Sink base to tall cupboard, and unit 8 to unit 6: both go through 48&nbsp;mm. 4 more for the curtain's two wall fittings.</span></span></label>
+    <label><input type="checkbox" data-k="b32"><span><b>Masonry wall plug for 4&nbsp;mm screws <span class="qty">need 4</span></b><span class="why">The curtain's wall fittings on the left wall, which is solid.</span></span></label>
+    <label><input type="checkbox" data-k="b12"><span><b>Wood screw 4.0 × 30 <span class="qty">need 4–8</span></b><span class="why">The pad under the sink base leg: 4. 4 more only if unit 8's own joining screws are too long.</span></span></label>
+    <label><input type="checkbox" data-k="b13"><span><b>Pan-head wood screw 3.5 × 10 <span class="qty">need 6</span></b><span class="why">Brackets into panel 1. It's 12&nbsp;mm thick, so anything longer comes through.</span></span></label>
+    <label><input type="checkbox" data-k="b14"><span><b>Steel angle bracket 40 × 40 <span class="qty">need 2</span></b><span class="why">Sink base's notched corner; panel 1 to the wall.</span></span></label>
+    <label><input type="checkbox" data-k="b15"><span><b>Steel angle bracket 25 × 25 <span class="qty">need 2</span></b><span class="why">Panel 1's top, up into unit 5.</span></span></label>
+    <label><input type="checkbox" data-k="b16"><span><b>Plastic packing shims, mixed 1–6&nbsp;mm <span class="qty">1 pack</span></b><span class="why">Behind the strip where the plaster dips, and unit 5's shim strip.</span></span></label>
+    <label><input type="checkbox" data-k="b17"><span><b>Cable grommet 35&nbsp;mm <span class="qty">× 1</span></b><span class="why">The socket cable's hole in the tall cupboard back.</span></span></label>
+  </div>
+
+  <h3>B&amp;Q, glue, sealant and paint</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b18"><span><b>Grab adhesive, solvent-free <span class="qty">1 cartridge</span></b><span class="why">Packers, unit 5's shim strip, filler 4's L, the leg pad.</span></span></label>
+    <label><input type="checkbox" data-k="b19"><span><b>Sanitary silicone, white or clear <span class="qty">1 tube</span></b><span class="why">Sink rim and worktop to wall. One tube does about 15&nbsp;m; you need about 5.</span></span></label>
+    <label><input type="checkbox" data-k="b20"><span><b>Clear edge sealer or yacht varnish <span class="qty">smallest tin</span></b><span class="why">Every cut edge of the worktop and panels, and the sink hole. The core is chipboard and swells when wet.</span></span></label>
+    <label><input type="checkbox" data-k="b21"><span><b>Bathroom emulsion, mould-resistant <span class="qty">1 litre</span></b><span class="why">Above the tiles, for splashback E (the default).</span></span></label>
+    <label><input type="checkbox" data-k="b22"><span><b>Masking tape 25&nbsp;mm <span class="qty">1 roll</span></b><span class="why">Only if there's none at home. Over every spot you drill through tile.</span></span></label>
+  </div>
+
+  <h3>The plumber and electrician bring</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b23"><span><b>2 isolating valves or adaptors, 15&nbsp;mm to ½" BSP</b><span class="why">For the tap's G½ hoses. Ask the plumber to bring them.</span></span></label>
+    <label><input type="checkbox" data-k="b24"><span><b>Sockets, cable and trunking</b><span class="why">The electrician specifies them: the cupboard socket plus the washer and dryer.</span></span></label>
+  </div>
+
+  <h3>Tools, only if you don't have them</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b25"><span><b>Stud and live-cable detector</b><span class="why">First thing: it sets the screw and anchor counts above.</span></span></label>
+    <label><input type="checkbox" data-k="b26"><span><b>Tile bits: 6&nbsp;mm, plus the anchor's hole size</b><span class="why">Through the old shower tiles at the sink base and panel 1.</span></span></label>
+    <label><input type="checkbox" data-k="b27"><span><b>35&nbsp;mm hole saw, 5.5&nbsp;mm HSS bit, 3 and 5&nbsp;mm wood bits, countersink</b><span class="why">Cable hole; extra rail holes; pilots.</span></span></label>
+    <label><input type="checkbox" data-k="b28"><span><b>Fine laminate jigsaw blade, hacksaw, silicone gun</b><span class="why">Sink hole in the worktop; cutting the rail.</span></span></label>
+    <label><input type="checkbox" data-k="b29"><span><b>Right-angle drill head or a stubby screwdriver</b><span class="why">The screws inside unit 8, a 364&nbsp;mm box.</span></span></label>
+  </div>
+
+  <h3>Only if you choose splashback B</h3>
+  <div class="todo shop">
+    <label><input type="checkbox" data-k="b30"><span><b>18&nbsp;mm moisture-resistant MDF or ply, 560 × 630, plus 6 more anchors</b><span class="why">Packs the wall out above the dado, from 795. After the units are in, measure the niche (about 598 × 1168) and order one panel cut to size, with panel adhesive.</span></span></label>
+  </div>
+</section>
+
+<section>
+  <h2><span class="dot" style="background:var(--ok)"></span>Already got</h2>
+  <ul class="ok">
+    <li>Hinges: 6 two-packs = 12. Five doors need 11.</li>
+    <li>Handles: 3 two-packs = 6, one per handled front.</li>
+    <li>Legs: 4 two-packs = 8, four each for the sink base and tall cupboard, with 12 plinth clips.</li>
+    <li>Shelves: 1 two-pack for the tall cupboard.</li>
+    <li>Cover panels: the ordered 62×220 is the tall cupboard's cover. One 39×86 makes filler 4, the 62×80 makes panel 7, one 39×86 is spare.</li>
+    <li>Bought with the tap: SALLSJÖN mixer 306.238.89, HAVSTORP plinth (cut to 1012) and the VIDGA curtain track.</li>
+  </ul>
+</section>
+</main>
+
+<script>
+(function(){
+  const b=document.getElementById('theme'),r=document.documentElement;
+  function set(t){if(t==='light'){r.setAttribute('data-theme','light');b.textContent='Dark'}else{r.removeAttribute('data-theme');b.textContent='Light'}
+    try{localStorage.setItem('theme',t)}catch(e){}}
+  let t='dark';try{t=localStorage.getItem('theme')||'dark'}catch(e){}
+  document.querySelectorAll('.todo input').forEach(c=>{try{c.checked=localStorage.getItem('todo-'+c.dataset.k)==='1'}catch(e){}
+    c.onchange=()=>{try{localStorage.setItem('todo-'+c.dataset.k,c.checked?'1':'0')}catch(e){}}});
+  set(t);b.onclick=()=>set(r.getAttribute('data-theme')==='light'?'dark':'light');
+})();
+</script>
